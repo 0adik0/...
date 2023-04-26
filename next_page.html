@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Приложения</title>
+</head>
+<body>
+    <div class="logout-container">
+        <button id="logout-btn" class="logout-btn">Выйти</button>
+      </div>
+
+<div id="logoutModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <h4>Выход</h4>
+      <p>Вы действительно хотите выйти из своей учетной записи?</p>
+      <div class="modal-buttons">
+        <button id="confirmLogout" class="btn">Да, выйти</button>
+        <button id="cancelLogout" class="btn">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+    <div class="wrapper">
+        <div class="app-list">
+            <h1>Список приложений</h1>
+            <div id="apps" class="app-container"></div>
+            <a href="#" id="createAppBtn" class="create-app-btn">Создать приложение</a>
+            <div id="createAppForm" class="create-app-form" hidden>
+                <h3>Создать приложение</h3>
+                <form>
+                    <input id="appName" type="text" placeholder="Название приложения">
+                    <button type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+        <div class="app-settings" hidden>
+            <h1>Настройки</h1>
+            <form>
+                <label for="countries">Страны:</label>
+                <input id="countries" type="text" placeholder="RU KZ UA">
+
+                <label for="isEnabled">Включено:</label>
+                <input id="isEnabled" type="checkbox">
+
+                <label for="link">Ссылка:</label>
+                <input id="link" type="text" placeholder="https://www.example.com/">
+
+                <label for="oneSignal">OneSignal:</label>
+                <input id="oneSignal" type="text" placeholder="OneSignal ID">
+
+                <label for="appIDs">Приложения:</label>
+                <input id="appIDs" type="text" placeholder="App ID">
+
+                <button type="submit" id="save">Сохранить настройки</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (!user) {
+            // Пользователь не авторизован, перенаправить на index.html
+            window.location.replace("index.html");
+          } else {
+            // Пользователь авторизован, оставить на next_pager.html
+          }
+        });
+      </script>
+      
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
